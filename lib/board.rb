@@ -4,8 +4,8 @@ class Board
 
   attr_accessor :cells_hash # can I do this for the dummy test?
 
-  def initialize
-    @cells_hash = {}
+  def initialize(cells_hash = {})
+    @cells_hash = cells_hash
     grid_ref_array.each {|grid_ref| @cells_hash[grid_ref] = Cell.new}
   end
 
@@ -18,6 +18,7 @@ class Board
   end
 
   def place_ship_cell(grid_ref)
+    raise "Not a valid cell" unless @cells_hash.has_key?(grid_ref)
     @cells_hash[grid_ref].is_part_of_a_ship
   end
 
@@ -28,6 +29,7 @@ class Board
   end
 
   def shoot_at_cell(grid_ref)
+    raise "Not a valid cell" unless @cells_hash.has_key?(grid_ref)
     @cells_hash[grid_ref].has_been_hit
   end
 end

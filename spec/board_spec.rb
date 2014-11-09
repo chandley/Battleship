@@ -55,6 +55,13 @@ describe Board do
       dummy_board.shoot_at_cell('a1')
     end
 
+    it 'should raise an error if ship place at invalid grid ref' do
+      expect(lambda{board.place_ship_cell('a13')}).to raise_error(RuntimeError)
+    end
+
+    it 'should raise error if shot at invalid grid ref' do
+      expect(lambda{board.shoot_at_cell('a13')}).to raise_error(RuntimeError)
+    end
   end
 end
 
