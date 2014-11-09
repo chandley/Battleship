@@ -30,6 +30,7 @@ class Board
 
   def shoot_at_cell(grid_ref)
     raise "Not a valid cell" unless @cells_hash.has_key?(grid_ref)
+    raise "Already shot - choose another" if @cells_hash[grid_ref].hit == true
     @cells_hash[grid_ref].has_been_hit
   end
 end
