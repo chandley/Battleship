@@ -56,19 +56,18 @@ describe Player do
 		expect(player.chosen_all_ships_positions?).to be true
 	end
 
-	it "should then give ship positions to board when finished choosing" do
-		player.chooses_cell("a1")
-		player.chooses_cell("a2")
-		player.chooses_cell("c10")
-		player.chooses_cell("e9")
-		player.chooses_cell("j3")
-		expect(board).to have_received(:place_all_ships)
-	end
+	# it "should then give ship positions to board when finished choosing" do
+	# 	player.chooses_cell("a1")
+	# 	player.chooses_cell("a2")
+	# 	player.chooses_cell("c10")
+	# 	player.chooses_cell("e9")
+	# 	player.chooses_cell("j3")
+	# 	expect(board).to have_received(:place_all_ships)
+	# end
 
-	it "should pass ship position to board when aiming fire!" do
-		player.chooses_cell_for_shooting("a1")
-		expect(board).to have_received(:shoot_at_cell)
-	end
-
+	# it "should pass ship position to board when aiming fire!" do
+	# 	player.chooses_cell_for_shooting("a1")
+	# 	expect(board).to have_received(:shoot_at_cell)
+	# end
 
 end

@@ -24,7 +24,7 @@ class Ship
 	end
 
 	def are_all_my_cells_hit?
-		sink! if member_cells.all? { |cell| cell.has_been_hit == true} 
+		sink! if member_cells.all?(&:has_been_hit)
 	end
 
 
