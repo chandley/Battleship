@@ -18,14 +18,14 @@ describe Player do
 		expect(player.ship_coordinates.count).to eq 1
 	end
 
-	it "cannot place the same cell twice" do
-		player.chooses_cell("a1")
-		expect{player.chooses_cell("a1")}.to raise_error(NeedsToBeUnique)
-	end
+	# it "cannot place the same cell twice" do
+	# 	player.chooses_cell("a1")
+	# 	expect{player.chooses_cell("a1")}.to raise_error(NeedsToBeUnique)
+	# end
 
-	it "should choose cell names that are two characters long, begin with A-J and end with 1-10" do
-		expect{player.chooses_cell("a1donkey")}.to raise_error(IncorrectCharacterFormat)
-	end
+	# it "should choose cell names that are two characters long, begin with A-J and end with 1-10" do
+	# 	expect{player.chooses_cell("a1donkey")}.to raise_error(IncorrectCharacterFormat)
+	# end
 
 	it "should be able to place unique ship position" do
 		player.chooses_cell("a1")
@@ -38,14 +38,14 @@ describe Player do
 		expect(player.shot_coordinates.count).to be 1
 	end
 
-	it "cannot hit the same cell twice" do
-		player.chooses_cell_for_shooting("a1")
-		expect{player.chooses_cell_for_shooting("a1")}.to raise_error(NeedsToBeUnique)
-	end
+	# it "cannot hit the same cell twice" do
+	# 	player.chooses_cell_for_shooting("a1")
+	# 	expect{player.chooses_cell_for_shooting("a1")}.to raise_error(NeedsToBeUnique)
+	# end
 
-	it "cannot should choose cell names that are two characters long, begin with A-J and end with 1-10" do
-		expect{player.chooses_cell_for_shooting("w12")}.to raise_error(IncorrectCharacterFormat)
-	end
+	# it "cannot should choose cell names that are two characters long, begin with A-J and end with 1-10" do
+	# 	expect{player.chooses_cell_for_shooting("w12")}.to raise_error(IncorrectCharacterFormat)
+	# end
 
 	it "should know when finished choosing positions for ships" do
 		player.chooses_cell("a1")
