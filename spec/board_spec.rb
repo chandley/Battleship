@@ -32,10 +32,10 @@ describe Board do
     end
 
     it "has a ship at a1 after ship placed at a1" do
-      water = double :cell 
       dummy_board = Board.new
-      dummy_board.cells_hash = { 'a1' => water }
-      expect(water).to receive(:is_part_of_a_ship)
+      dummy_board.cells_hash = { 'a1' => cell }
+      allow(cell).to receive(:have_ship)
+      expect(cell).to receive(:is_part_of_a_ship)
       dummy_board.place_ship_cell('a1')
     end
 
@@ -43,6 +43,7 @@ describe Board do
       water = double :cell 
       dummy_board = Board.new
       dummy_board.cells_hash = { 'a1' => water }
+      allow(water).to receive(:have_ship)
       expect(water).to receive(:is_part_of_a_ship)
       dummy_board.place_all_ships(['a1'])
     end
@@ -57,6 +58,14 @@ describe Board do
 
     it 'should raise an error if ship place at invalid grid ref' do
       expect(lambda{board.place_ship_cell('a13')}).to raise_error(RuntimeError)
+    end
+
+    it 'should raise an error if ship placed twice in same cell'do
+    ship = double :cell#, have_ship: true
+    dummy_board = Board.new 
+    dummy_board.cells_hash = {'a1' => ship}
+    allow(ship).to receive(:have_ship).and_return(true)
+    expect(lambda{board.place_ship_cell('a1')}).to raise_error(RuntimeError)
     end
 
     it 'should raise error if shot at invalid grid ref' do

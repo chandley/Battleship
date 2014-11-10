@@ -19,6 +19,7 @@ class Board
 
   def place_ship_cell(grid_ref)
     raise "Not a valid cell" unless @cells_hash.has_key?(grid_ref)
+    raise "Can't place ship twice in same cell" if @cells_hash[grid_ref].have_ship == true
     @cells_hash[grid_ref].is_part_of_a_ship
   end
 
